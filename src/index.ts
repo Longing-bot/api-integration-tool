@@ -60,7 +60,7 @@ program
       console.log(formatter.format(response));
       
       process.exit(0);
-    } catch (error) {
+    } catch (error: any) {
       console.error(chalk.red('❌ Test failed:'), error.message);
       process.exit(1);
     }
@@ -86,7 +86,7 @@ program
       console.log(chalk.green(`✅ Batch completed: ${results.successful}/${results.total} successful`));
       console.log(formatter.format(results));
       
-    } catch (error) {
+    } catch (error: any) {
       console.error(chalk.red('❌ Batch execution failed:'), error.message);
       process.exit(1);
     }
@@ -105,7 +105,7 @@ program
       const health = await client.checkHealth(options.timeout);
       const formatter = new ResponseFormatter();
       console.log(chalk.green('✅ Health check passed:'), formatter.format(health));
-    } catch (error) {
+    } catch (error: any) {
       console.error(chalk.red('❌ Health check failed:'), error.message);
       process.exit(1);
     }
@@ -133,13 +133,13 @@ program
         console.log(chalk.green('✅ Validation passed'));
       } else {
         console.error(chalk.red('❌ Validation failed:'));
-        result.errors.forEach(error => {
+        result.errors.forEach((error: string) => {
           console.error(`   - ${error}`);
         });
         process.exit(1);
       }
       
-    } catch (error) {
+    } catch (error: any) {
       console.error(chalk.red('❌ Validation error:'), error.message);
       process.exit(1);
     }
@@ -180,7 +180,7 @@ program
         console.log(Object.keys(spec.paths || {}).join('\n'));
       }
       
-    } catch (error) {
+    } catch (error: any) {
       console.error(chalk.red('❌ Documentation generation failed:'), error.message);
       process.exit(1);
     }

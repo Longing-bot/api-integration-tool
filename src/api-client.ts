@@ -93,7 +93,7 @@ export class ApiClient {
                 data: op.data
               });
               return { id: op.id, success: true, data: response.data };
-            } catch (error) {
+            } catch (error: any) {
               return { id: op.id, success: false, error: error.message };
             }
           })
@@ -115,7 +115,7 @@ export class ApiClient {
             data: operation.data
           });
           results.push({ id: operation.id, success: true, data: response.data });
-        } catch (error) {
+        } catch (error: any) {
           results.push({ id: operation.id, success: false, error: error.message });
         }
       }
@@ -168,7 +168,7 @@ export class ApiClient {
 
       throw new Error('No healthy endpoints found');
       
-    } catch (error) {
+    } catch (error: any) {
       return {
         status: 'unhealthy',
         error: error.message,

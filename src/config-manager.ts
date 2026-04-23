@@ -27,7 +27,7 @@ export class ConfigManager {
       } else {
         console.log('💡 No existing config found, using defaults');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.warn('⚠️ Error loading config:', error.message);
     }
   }
@@ -36,7 +36,7 @@ export class ConfigManager {
     try {
       fs.writeFileSync(this.configPath, JSON.stringify(this.config, null, 2));
       console.log('💾 Configuration saved to', this.configPath);
-    } catch (error) {
+    } catch (error: any) {
       console.error('❌ Error saving config:', error.message);
     }
   }
